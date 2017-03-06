@@ -1,21 +1,25 @@
-module.exports = function SignInCtrl($scope, $http) {
+module.exports = function SignInCtrl($scope, $http, $location) {
   console.info('TEST');
-  return false;
   $scope.error = null
 
-  $scope.submit = function() {
-    console.info('TEST2');
-    return false;
+  //页面加载完执行登录
+  $scope.$on = function() {
+    //根据 url 传参获取用户信息
+    var urlData = $location.search()
+
     var data = {
-      name: $scope.signin.username.$modelValue
-      , email: $scope.signin.email.$modelValue
+      name: urlData.name,
+      email: urlData.email
+      // name: $scope.signin.username.$modelValue
+      // , email: $scope.signin.email.$modelValue
     }
+    console.info('data', data, 'urlData', urlData)
+
     $scope.invalid = false
     $http.post('/auth/api/v1/mock', data)
       .success(function(response) {
         $scope.error = null,
-        console.info('TEST');
-        // location.replace(response.redirect)
+        location.replace(response.redirect)
       })
       .error(function(response) {
         switch (response.error) {
@@ -36,5 +40,6 @@ module.exports = function SignInCtrl($scope, $http) {
             break
         }
       })
+    return false
   }
 }
