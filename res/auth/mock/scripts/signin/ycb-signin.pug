@@ -1,0 +1,12 @@
+.login2(ng-controller='YcbSignInCtrl')
+  .login-wrapper
+
+    form(name='signin', novalidate, ng-submit='submit()')
+      .alert.alert-danger(ng-show='error')
+        span(ng-show='error.$invalid', translate) Check errors below
+        span(ng-show='error.$incorrect', translate) Incorrect login details
+        span(ng-show='error.$server', translate) Server error. Check log output.
+
+
+
+      input.btn.btn-lg.btn-primary.btn-block(type='submit', value='Loading...')
