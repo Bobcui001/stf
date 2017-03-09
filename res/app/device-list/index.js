@@ -18,12 +18,14 @@ module.exports = angular.module('device-list', [
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/devices', {
-        template: require('./device-list.pug'),
-        controller: 'DeviceListCtrl'
+        template: require('./ycb-device-list.pug'),
+        // controller: 'DeviceListCtrl'
+        controller: 'YcbDeviceListCtrl'
       })
   }])
   .run(function(editableOptions) {
     // bootstrap3 theme for xeditables
     editableOptions.theme = 'bs3'
   })
-  .controller('DeviceListCtrl', require('./device-list-controller'))
+  // .controller('DeviceListCtrl', require('./device-list-controller'))
+  .controller('YcbDeviceListCtrl', require('./ycb-device-list-controller'))

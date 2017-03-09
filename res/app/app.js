@@ -26,6 +26,7 @@ require.ensure([], function(require) {
         })
     })
 
+    //对 hotkeysProvider 服务进行配置，hotkeysProvider服务 创建方式为 provider
     .config(function(hotkeysProvider) {
       hotkeysProvider.templateTitle = 'Keyboard Shortcuts:'
     })
